@@ -1,10 +1,21 @@
+/* Light weight */
 @font-face {
   font-family: 'Conthrax';
-  src: url('../fonts/Conthrax.woff2') format('woff2'),
-       url('../fonts/Conthrax.woff') format('woff');
-  font-weight: normal;
   font-style: normal;
+  font-weight: 300;
+  src: url('fonts/Conthrax-Light.woff2') format('woff2'),
+       url('fonts/Conthrax-Light.woff') format('woff');
 }
+
+/* SemiBold weight */
+@font-face {
+  font-family: 'Conthrax';
+  font-style: normal;
+  font-weight: 600;
+  src: url('fonts/Conthrax-SemiBold.woff2') format('woff2'),
+       url('fonts/Conthrax-SemiBold.woff') format('woff');
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
@@ -31,7 +42,8 @@ section {
   position: relative;
   background: url('../images/grunge-background.jpg') no-repeat center center fixed;
   background-size: cover;
-  font-family: 'Conthrax', sans-serif;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .details {
@@ -116,7 +128,8 @@ section {
   cursor: pointer;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  font-family: 'Conthrax', sans-serif;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .right-section {
@@ -134,8 +147,9 @@ section {
 .details-content {
   max-width: 800px;
   text-align: center;
-  font-family: 'Conthrax', sans-serif;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
   font-size: 18px;
+  font-weight: 300;
   line-height: 1.8;
 }
 
@@ -150,11 +164,12 @@ section {
 }
 
 .countdown {
-  margin-top: 30px;
+  margin: 50px 0;
   display: flex;
   gap: 20px;
   justify-content: center;
-  font-family: 'Conthrax', sans-serif;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .countdown-item {

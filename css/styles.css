@@ -37,6 +37,8 @@ section {
   justify-content: center;
   flex-direction: column;
   padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero {
@@ -55,11 +57,13 @@ section {
   z-index: 3;
   overflow: hidden;
   width: 100%;
+  max-width: 100%;
 }
 
 .left-pattern,
 .right-pattern {
   position: fixed;
+  overflow: hidden;
   top: 0;
   bottom: 0;
   width: 50px;
@@ -74,7 +78,7 @@ section {
 }
 
 .right-pattern {
-  right: 0;
+  right: 15px;
   background-image: url('../images/pattern-rt.png');
 }
 
@@ -118,7 +122,7 @@ section {
   margin-top: 10px;
 }
 
-.cta-button {
+.hero-cta-button {
   margin-top: 20px;
   padding: 15px 30px;
   font-size: 16px;
@@ -140,6 +144,7 @@ section {
 
 .album-cover img {
   width: 100%;
+  max-width: 600px;
   height: auto;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
@@ -148,6 +153,7 @@ section {
 .details-content {
   max-width: 800px;
   text-align: center;
+  margin: 0 auto;
   font-family: 'Conthrax', 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 300;
@@ -199,6 +205,7 @@ section {
 
 .pricing {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -208,21 +215,27 @@ section {
 }
 
 .pricing h1 {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   font-size: 40px;
+  text-align: center;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #333;
 }
 
 .ticket-container {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .ticket {
   position: relative;
-  width: 180px;
-  height: 230px;
-  padding: 20px;
+  width: 220px;
+  height: auto;
+  min-height: 280px;
+  padding: 30px 20px;
   border-radius: 20px;
   background-color: white;
   text-align: center;
@@ -231,8 +244,37 @@ section {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ticket:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* VVIP Special Border */
+.ticket.vvip {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box, 
+              linear-gradient(135deg, #FFD700, #FFA500, #FF8C00) border-box;
+  transform: scale(1.05);
+}
+
+.ticket.vvip::after {
+  content: "PREMIUM";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Gradient border using pseudo-element */
@@ -248,28 +290,21 @@ section {
   z-index: -1;
 }
 
-/* Custom gradient borders
-.ticket.standard::before {
-  background: linear-gradient(135deg, #ccc, #888);
-}
-.ticket.vip::before {
-  background: linear-gradient(135deg, #8B4513, #A0522D);
-}
-.ticket.vvip::before {
-  background: linear-gradient(135deg, gold, goldenrod);
-} */
-
 .ticket h3 {
-  margin: 0;
-  font-size: 1rem;
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
   color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Price styling */
 .ticket p {
-  font-size: 1.7rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin: 50px 0;
+  margin: 15px 0;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
 }
 
 /* Price colors */
@@ -280,26 +315,66 @@ section {
   color: #8B4513;
 }
 .ticket.vvip p {
-  color: goldenrod;
+  color: #FF8C00;
+}
+
+.ticket ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  flex-grow: 1;
+}
+
+.ticket li {
+  padding: 8px 0;
+  font-size: 0.9rem;
+  color: #666;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.ticket li:last-child {
+  border-bottom: none;
+}
+
+.ticket li::before {
+  content: "✓";
+  color: #4CAF50;
+  font-weight: bold;
+  margin-right: 8px;
 }
 
 .cta-button {
-  margin-top: 5px;
-  padding: 10px 30px;
+  margin-top: 20px;
+  padding: 12px 35px;
   border: none;
-  border-radius: 10px;
+  border-radius: 25px;
   background-color: #333;
   color: white;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  width: 100%;
 }
 
 .cta-button:hover {
   background-color: #555;
+  transform: translateY(-2px);
 }
+
+.ticket.vvip .cta-button {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #333;
+  font-weight: bold;
+}
+
+.ticket.vvip .cta-button:hover {
+  background: linear-gradient(135deg, #FFA500, #FF8C00);
+  color: white;
+}
+
 
 
 /* ====== Responsive Styles ====== */
@@ -335,25 +410,77 @@ section {
   }
 
   .details-content {
-    font-size: 16px;
+    font-size: 14px;
     padding: 0 20px;
     scroll-snap-align: start;
+  }
+
+
+   .pricing {
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
   }
 
   .pricing h1 {
     font-size: 28px;
     text-align: center;
+    margin-bottom: 30px;
   }
 
   .ticket-container {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 
   .ticket {
-    width: 90%;
-    max-width: 250px;
+    width: 70%;
+    max-width: 300px;
     height: auto;
-    margin-bottom: 20px;
+    min-height: 250px;
+    margin-bottom: 0;
+    padding: 25px 20px;
+  }
+
+  .ticket.vvip {
+    transform: none;
+  }
+
+  .ticket.vvip::after {
+    top: -10px;
+    font-size: 0.65rem;
+    padding: 4px 12px;
+  }
+
+  .ticket p {
+    font-size: 2.2rem;
+    margin: 10px 0;
+  }
+
+  .ticket h3 {
+    font-size: 1.1rem;
+  }
+
+  .ticket li {
+    font-size: 0.85rem;
+    padding: 6px 0;
+  }
+
+  .cta-button {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+  }
+
+  .right-pattern {
+  right: 0;
+}
+}
+
+@media screen and (max-width: 768px) {
+  .left-pattern,
+  .right-pattern {
+    width: 25px; /* Adjust between 20–30px as preferred */
   }
 }
 

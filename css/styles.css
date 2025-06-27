@@ -3,8 +3,8 @@
   font-family: 'Conthrax';
   font-style: normal;
   font-weight: 300;
-  src: url('fonts/Conthrax-Light.woff2') format('woff2'),
-       url('fonts/Conthrax-Light.woff') format('woff');
+  src: url('../fonts/Conthrax-Light.woff2') format('woff2'),
+       url('../fonts/Conthrax-Light.woff') format('woff');
 }
 
 /* SemiBold weight */
@@ -12,52 +12,358 @@
   font-family: 'Conthrax';
   font-style: normal;
   font-weight: 600;
-  src: url('fonts/Conthrax-SemiBold.woff2') format('woff2'),
-       url('fonts/Conthrax-SemiBold.woff') format('woff');
+  src: url('../fonts/Conthrax-SemiBold.woff2') format('woff2'),
+       url('../fonts/Conthrax-SemiBold.woff') format('woff');
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  overflow: hidden;
+}
+
+.scroll-container {
   overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
   height: 100vh;
 }
 
-section {
-  scroll-snap-align: start;
-  height: 100vh;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background: black;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: top 0.3s ease-in-out;
+}
+
+.navbar.hidden {
+  top: -100px; /* hide it by moving it out of view */
+}
+
+.navbar-left .logo {
+  font-family: 'Conthrax', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.navbar-right {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 60px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  justify-content: center;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #9b9b9b;
+}
+
+.ticket-btn {
+  padding: 8px 18px;
+  border-radius: 25px;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid white;
+  color: rgb(255, 255, 255) !important;
+  font-weight: 600;
+  font-size: 12px;
+  transition: background 0.3s, color 0.3s;
+}
+
+ .ticket-btn:hover {
+    background-color: white;
+    color: black !important;
+  }
+
+.hamburger {
+  display: none;
   flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: 20px;
+  z-index: 1001; /* stay above the menu */
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Active state for morphing into an X */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.95);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  padding: 20px;
+  z-index: 998;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+
+.mobile-menu a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.mobile-menu .ticket-btn {
+  background: rgb(0, 0, 0);
+  border: 1px solid white;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+.mobile-menu .ticket-btn:hover {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 25px;
+}
+
+ .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+.close-btn {
+  font-size: 32px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+
+section {
+  scroll-snap-align: start;
+  height: 100vh; 
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.hero {
+#hero {
   position: relative;
-  background: url('../images/grunge-background.jpg') no-repeat center center fixed;
+  background: url('../images/album-img.jpg') no-repeat center center fixed;
   background-size: cover;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-weight: 600;
+  z-index: 3;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; 
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  z-index: 1;
+}
+
+
+.title-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 180px 0 0 80px;
+}
+
+
+.title {
+  font-size: 60px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 44px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+.hero-cta-button {
+  text-decoration: none;
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 300;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero-cta-button:hover {
+  background-color: #000;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.countdown {
+  background-color: black;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  margin: 50px 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
   font-family: 'Conthrax', 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
-.details {
+.countdown-item {
+  text-align: center;
+}
+
+.countdown-item .number {
+  font-size: 40px;
+}
+
+.countdown-item .label {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+#details {
   position: relative;
   background-color: white;
-  border-radius: 30px;
+  border-radius: 0 0 30px 30px;
   color: #000;
   z-index: 3;
   overflow: hidden;
   width: 100%;
   max-width: 100%;
+}
+
+
+.details-content {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.details-content strong {
+  font-weight: 800;
+  color: #111;
+}
+
+.details-content em {
+  font-style: italic;
+  color: #555;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .countdown {
+    flex-wrap: wrap;
+  }
+}
+
+#pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+#pricing h1 {
+  margin-bottom: 50px;
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Conthrax', 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #333;
 }
 
 .left-pattern,
@@ -80,147 +386,6 @@ section {
 .right-pattern {
   right: 15px;
   background-image: url('../images/pattern-rt.png');
-}
-
-.container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 20px;
-  text-align: center;
-}
-
-.left-section {
-  flex: 1;
-  min-width: 250px;
-}
-
-.title {
-  font-size: 60px;
-  color: #000000;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  margin: 0;
-}
-
-.subtitle {
-  font-size: 44px;
-  color: #000000;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  margin-top: 10px;
-}
-
-.hero-cta-button {
-  margin-top: 20px;
-  padding: 15px 30px;
-  font-size: 16px;
-  font-weight: 300;
-  border: none;
-  background-color: #000000;
-  color: #ffffff;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  font-family: 'Conthrax', 'Montserrat', sans-serif;
-  font-weight: 600;
-}
-
-.right-section {
-  flex: 1;
-  min-width: 250px;
-}
-
-.album-cover img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-}
-
-.details-content {
-  max-width: 800px;
-  text-align: center;
-  margin: 0 auto;
-  font-family: 'Conthrax', 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.8;
-}
-
-.details-content strong {
-  font-weight: 100;
-  color: #111;
-}
-
-.details-content em {
-  font-style: italic;
-  color: #555;
-}
-
-.countdown {
-  margin: 50px 0;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  font-family: 'Conthrax', 'Montserrat', sans-serif;
-  font-weight: 600;
-}
-
-.countdown-item {
-  text-align: center;
-}
-
-.countdown-item .number {
-  font-size: 40px;
-  color: #000;
-}
-
-.countdown-item .label {
-  font-size: 14px;
-  color: #333;
-  margin-top: 5px;
-}
-
-@media screen and (max-width: 768px) {
-  .main-content {
-    flex-direction: column;
-  }
-  .countdown {
-    flex-wrap: wrap;
-  }
-}
-
-.pricing {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
-  padding: 40px;
-  box-sizing: border-box;
-}
-
-.pricing h1 {
-  margin-bottom: 50px;
-  font-size: 40px;
-  text-align: center;
-  font-family: 'Conthrax', 'Montserrat', sans-serif;
-  font-weight: 600;
-  color: #333;
 }
 
 .ticket-container {
@@ -378,23 +543,146 @@ section {
 
 
 /* ====== Responsive Styles ====== */
-@media screen and (max-width: 768px) {
-  .main-content {
-    flex-direction: column-reverse; /* Album cover above text */
+
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    padding: 25px 40px;
+    justify-content: center;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .navbar-left .logo {
+      position: absolute;
+      left: 44%;
+      transform: translateX(-50%);
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .navbar-left .logo {
+      margin-right: 80px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  .title-content {
+    margin: 550px auto 0 auto;
     text-align: center;
+    padding: 0 40px;
   }
 
-  .right-section {
-    width: 80%;
-    margin-bottom: 20px;
+  .title {
+    font-size: 50px;
   }
 
-  .album-cover img {
-    width: 100%;
-    max-width: 250px;
+  .subtitle {
+    font-size: 36px;
+  }
+
+  .hero-cta-button {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+
+  .countdown {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .details-content {
+    font-size: 16px;
+    padding: 0 40px;
+  }
+
+  #pricing {
+    padding: 30px;
     height: auto;
-    margin: 0 auto;
+    min-height: 100vh;
   }
+
+  #pricing h1 {
+    font-size: 34px;
+    margin-bottom: 40px;
+  }
+
+  .ticket-container {
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+
+  .ticket {
+    width: 40%;
+    max-width: 320px;
+    padding: 25px;
+    min-height: 260px;
+  }
+
+  .ticket h3 {
+    font-size: 1.15rem;
+  }
+
+  .ticket p {
+    font-size: 2.3rem;
+  }
+
+  .ticket li {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 12px 28px;
+  }
+
+  .ticket.vvip::after {
+    top: -11px;
+    font-size: 0.68rem;
+    padding: 5px 14px;
+  }
+
+  .left-pattern,
+  .right-pattern {
+    width: 30px;
+  }
+
+  .right-pattern {
+    right: 10px;
+  }
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+
+  #hero {
+    background-position: 70% center
+  }
+
+
+  .title-content {
+    text-align: center;
+    margin: 550px auto;
+  }
+
 
   .title {
     font-size: 40px;
@@ -416,13 +704,13 @@ section {
   }
 
 
-   .pricing {
+   #pricing {
     padding: 20px;
     height: auto;
     min-height: 100vh;
   }
 
-  .pricing h1 {
+  #pricing h1 {
     font-size: 28px;
     text-align: center;
     margin-bottom: 30px;
@@ -475,9 +763,6 @@ section {
   .right-pattern {
   right: 0;
 }
-}
-
-@media screen and (max-width: 768px) {
   .left-pattern,
   .right-pattern {
     width: 25px; /* Adjust between 20–30px as preferred */

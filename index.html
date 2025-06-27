@@ -10,16 +10,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <section class="hero">
-    <div class="left-pattern"></div>
-    <div class="right-pattern"></div>
-    <div class="container">
-      <div class="main-content">
-        <div class="left-section">
+    <nav class="navbar">
+  <div class="navbar-left">
+    <a href="#hero" class="logo">FLAVIAN MARK</a>
+  </div>
+  <div class="navbar-right">
+    <ul class="nav-links">
+      <li><a href="#details">ABOUT</a></li>
+      <li><a href="#pricing" class="ticket-btn">BUY TICKET</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-header">
+    <a href="#hero" class="logo">FLAVIAN MARK</a>
+  </div>
+  <a href="#details">ABOUT</a>
+  <a href="#pricing" class="ticket-btn">BUY TICKET</a>
+</div>
+
+<main class="scroll-container"> 
+  <section id="hero">
+   
+    <div class="title-content">
           <h1 class="title">NO FEAR</h1>
           <h2 class="subtitle">ALBUM LAUNCH</h2>
+          <a href="#pricing" class="hero-cta-button" id="ticketBtn">BUY YOUR TICKET</a>
+    </div>
+  </section>
 
-          <div class="countdown" id="countdown">
+  <section id="details">
+
+    <!-- Countdown to the event: -->
+    
+    <div class="countdown" id="countdown">
       <div class="countdown-item">
         <div class="number" id="days">00</div>
         <div class="label">Days</div>
@@ -37,19 +68,9 @@
         <div class="label">Seconds</div>
       </div>
     </div>
+    
 
-          <button class="hero-cta-button" id="ticketBtn">BUY YOUR TICKET</button>
-        </div>
-        <div class="right-section">
-          <div class="album-cover">
-            <img src="images/album-cover.jpg" alt="album cover" class="album-image" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="details">
     <div class="details-content">
       <p>
         Flavian Mark will launch his <strong>"No Fear"</strong> album, a first in his musical career.
@@ -67,7 +88,9 @@
     </div>
   </section>
 
-   <section class="pricing">
+   <section id="pricing">
+     <div class="left-pattern"></div>
+    <div class="right-pattern"></div>
   <h1>NO FEAR TICKET PRICES</h1>
   <div class="ticket-container">
     <div class="ticket standard">
@@ -95,7 +118,7 @@
     </div>
   </div>
 </section>
-
+</main>
 
   <script src="index.js"></script>
 </body>

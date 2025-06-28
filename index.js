@@ -1,3 +1,4 @@
+
 const logo = document.getElementById('flavian-logo');
 if (logo) {
   logo.addEventListener('click', (e) => {

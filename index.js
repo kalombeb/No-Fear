@@ -1,9 +1,28 @@
+const logo = document.getElementById('flavian-logo');
+if (logo) {
+  logo.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.reload();
+  });
+}
+
+
+
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+const menuLinks = document.querySelectorAll('#mobileMenu a');
 
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   mobileMenu.classList.toggle('active');
+});
+
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    hamburger.classList.remove('active');
+  });
 });
 
 

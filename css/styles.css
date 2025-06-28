@@ -24,6 +24,7 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
   overflow: hidden;
+  height: 100vh;
 }
 
 .scroll-container {
@@ -31,6 +32,7 @@ html, body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar {
@@ -201,7 +203,7 @@ html, body {
 
 section {
   scroll-snap-align: start;
-  height: 100vh; 
+  min-height: 100vh; 
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
@@ -209,11 +211,20 @@ section {
 
 #hero {
   position: relative;
-  background: url('../images/album-img.jpg') no-repeat center center fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh; /* mobile landscape safe */
+  background: url('../images/album-img.avif') no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   font-family: 'Conthrax', 'Montserrat', sans-serif;
   font-weight: 600;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  padding: 0 20px;
   z-index: 3;
+  overflow: hidden;
 }
 
 #hero::after {
@@ -222,30 +233,32 @@ section {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50%; 
+  height: 50%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   z-index: 1;
+  pointer-events: none;
 }
 
-
 .title-content {
-  position: relative;
+  position: absolute;
+  top: 180px;
+  left: 90px;
   z-index: 2;
-  width: 100%;
-  max-width: 1200px;
-  margin: 180px 0 0 80px;
+  max-width: 90%;
+  text-align: left;
+  color: white;
 }
 
 
 .title {
-  font-size: 60px;
+  font-size: 50px;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   margin: 0;
 }
 
 .subtitle {
-  font-size: 44px;
+  font-size: 34px;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   margin-top: 10px;
@@ -256,7 +269,7 @@ section {
   text-decoration: none;
   margin-top: 30px;
   padding: 15px 30px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
   border: none;
   background-color: #ffffff;
@@ -554,7 +567,7 @@ section {
   }
 
   .navbar {
-    padding: 25px 40px;
+    padding: 20px 40px;
     justify-content: center;
   }
 
@@ -580,13 +593,15 @@ section {
     }
 }
 
+
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
-  .title-content {
-    margin: 550px auto 0 auto;
-    text-align: center;
-    padding: 0 40px;
+ .title-content {
+    font-size: 90%;
+    padding: 10px;
   }
+
+
 
   .title {
     font-size: 50px;
@@ -668,10 +683,33 @@ section {
 
 }
 
+@media (max-width: 1024px) and (orientation: landscape) {
+  #hero {
+    overflow-y: auto;  
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: black;
+            
+  }
+
+  #hero::after {
+    content: "";
+    position: fixed; /* changed from absolute to fixed */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+
 
 
 @media screen and (max-width: 768px) {
-
 
   #hero {
     background-position: 70% center
@@ -679,17 +717,30 @@ section {
 
 
   .title-content {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    margin: 550px auto;
+    color: white;
+    max-width: 90%;
+    padding: 20px;
+    margin-bottom: 120px; /* 👈 Increase this to lift text up */
+    left: 0;
+    right: 0;
   }
+  
 
 
   .title {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .subtitle {
-    font-size: 28px;
+    font-size: 18px;
+  }
+
+  .hero-cta-button {
+    padding: 12px 28px;
+    font-size: 12px;
   }
 
   .countdown {

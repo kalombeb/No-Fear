@@ -685,18 +685,13 @@ section {
 
 @media (max-width: 1024px) and (orientation: landscape) {
   #hero {
-    overflow-y: auto;  
-    background-position: top center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: black;
-            
+    overflow-y: auto;              
   }
 
   #hero::after {
     content: "";
-    position: fixed; /* changed from absolute to fixed */
-    bottom: 0;
+    position: absolute; /* changed from absolute to fixed */
+    bottom: -80px;
     left: 0;
     width: 100%;
     height: 50%;

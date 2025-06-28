@@ -28,6 +28,13 @@ html, body {
   height: 100vh;
 }
 
+.scroll-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch;
+}
+
 
 .navbar {
   display: flex;

@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NO FEAR - Album Launch</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://kit.fontawesome.com/86e7b132da.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -47,28 +51,7 @@
   </section>
 
   <section id="details">
-
-    <!-- Countdown to the event: -->
-    
-    <div class="countdown" id="countdown">
-      <div class="countdown-item">
-        <div class="number" id="days">00</div>
-        <div class="label">Days</div>
-      </div>
-      <div class="countdown-item">
-        <div class="number" id="hours">00</div>
-        <div class="label">Hours</div>
-      </div>
-      <div class="countdown-item">
-        <div class="number" id="minutes">00</div>
-        <div class="label">Minutes</div>
-      </div>
-      <div class="countdown-item">
-        <div class="number" id="seconds">00</div>
-        <div class="label">Seconds</div>
-      </div>
-    </div>
-    
+   
 
 
     <div class="details-content">
@@ -88,36 +71,76 @@
     </div>
   </section>
 
-   <section id="pricing">
-     <div class="left-pattern"></div>
-    <div class="right-pattern"></div>
-  <h1>NO FEAR TICKET PRICES</h1>
-  <div class="ticket-container">
-    <div class="ticket standard">
-      <h3>STANDARD</h3>
-      <p>K200</p>
-      <ul><li>Admits one</li></ul>
-      <button class="cta-button">Buy Ticket</button>
+    
+  <section id="pricing" class="tickets-section">
+    <h1>NO FEAR TICKET PRICES</h1>
+  <div class="ticket-grid">
+    <!-- Ticket 1 -->
+    <div class="ticket-card standard">
+      <img src="images/standard.jpg" alt="Regular Ticket" />
+      <p class="price">K200</p>
+      <button class="buy-btn">Buy Ticket</button>
     </div>
 
-    <div class="ticket vip">
-      <h3>VIP</h3>
-      <p>K500</p>
-      <ul><li>Admits one</li></ul>
-      <button class="cta-button">Buy Ticket</button>
+    <!-- Ticket 2 -->
+    <div class="ticket-card vip">
+      <img src="images/vip.jpg" alt="VIP Ticket" />
+      <p class="price">K500</p>
+      <button class="buy-btn">Buy Ticket</button>
     </div>
 
-    <div class="ticket vvip">
-      <h3>VVIP</h3>
-      <p>K1000</p>
-      <ul>
-        <li>Admits one</li>
-        <li>Includes No Fear goodies and snacks.</li>
-      </ul>
-      <button class="cta-button">Buy Ticket</button>
+    <!-- Ticket 3 -->
+    <div class="ticket-card vvip">
+      <img src="images/vvip.jpg" alt="VVIP Ticket" />
+      <p class="price">K1000</p>
+      <button class="buy-btn">Buy Ticket</button>
     </div>
   </div>
 </section>
+
+
+
+<footer class="site-footer">
+
+     <!-- Countdown to the event: -->
+    
+    <div class="countdown" id="countdown">
+        <h2 class="countdown-heading">COUNTDOWN TO EVENT</h2>
+      <div class="countdown-item">
+        <div class="number" id="days">00</div>
+        <div class="label">Days</div>
+      </div>
+      <div class="countdown-item">
+        <div class="number" id="hours">00</div>
+        <div class="label">Hours</div>
+      </div>
+      <div class="countdown-item">
+        <div class="number" id="minutes">00</div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="countdown-item">
+        <div class="number" id="seconds">00</div>
+        <div class="label">Seconds</div>
+      </div>
+    </div>
+
+
+  <div class="social-links">
+    <a href="https://www.facebook.com/p/Flavian-Mark-100063669619109/" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/flavianmarkzm/" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/channel/UCTxO-wABkmXfUeHOn3QEE2A" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+  <p class="copyright">&copy; 2025 Flavian Mark. All rights reserved.</p>
+
+</footer>
+
+
 </main>
 
   <script src="index.js"></script>

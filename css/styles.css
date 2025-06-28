@@ -28,13 +28,6 @@ html, body {
   height: 100vh;
 }
 
-.scroll-container {
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
-  -webkit-overflow-scrolling: touch;
-}
 
 .navbar {
   display: flex;
@@ -632,21 +625,33 @@ section {
     scroll-snap-align: start;
   }
 
-
-  .ticket-grid {
-    flex-direction: column;
-    gap: 20px;
+  .tickets-section h1 {
+    font-size: 25px;
   }
 
-  .ticket-card {
-    width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
-  }
+.ticket-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       
+  justify-content: center;
+  padding: 0;                
+  margin: 0 auto;           
+  width: 100%;
+}
+
+.ticket-card {
+  width: 100%;
+  max-width: 90%;          
+  margin: 0 auto;           
+  box-sizing: border-box;
+  text-align: center;
+}
+
 
   .ticket-card img {
     width: 100%;
     aspect-ratio: 3 / 1;
+    object-fit: cover;
   }
 
 }

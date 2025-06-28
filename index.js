@@ -1,9 +1,35 @@
-function buyTicket() {
-  alert("Redirecting to ticket purchase...");
-  // window.location.href = 'https://yourticketpage.com';
-}
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 
-document.getElementById("ticketBtn").addEventListener("click", buyTicket);
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+});
+
+
+
+
+
+const navbar = document.querySelector('.navbar');
+const scrollContainer = document.querySelector('.scroll-container');
+
+let lastScrollTop = 0;
+
+scrollContainer.addEventListener('scroll', () => {
+  const scrollTop = scrollContainer.scrollTop;
+
+  if (scrollTop > lastScrollTop) {
+    // Scrolling down
+    navbar.classList.add('hidden');
+  } else {
+    // Scrolling up
+    navbar.classList.remove('hidden');
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+
 
 // Countdown Timer
 function updateCountdown() {

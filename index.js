@@ -53,7 +53,7 @@ scrollContainer.addEventListener('scroll', () => {
 
 // Countdown Timer
 function updateCountdown() {
-  const launchDate = new Date("2025-08-09T18:30:00+02:00"); // Lusaka time
+  const launchDate = new Date("2025-10-25T18:30:00+02:00"); // Lusaka time
   const now = new Date();
 
   const diff = launchDate - now;
